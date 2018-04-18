@@ -1,9 +1,21 @@
 import request from 'superagent'
 
-const rootUrl = 'https://eda-te-reo.herokuapp.com/api'
+//const rootUrl = 'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events'
 
-export function getTranslation (word) {
-  return request.get(rootUrl + '/translate?word=' + word).then((res)=>{
-    return res.text
-  })
+const nasaUrl = 'https://api.nasa.gov/planetary/apod?api_key=rKA917qb66xRrIsAMt5TREu8HE55y4ZgbYSHZCgr'
+
+// export function getTranslation (status) {
+//   return request.get(rootUrl + '?limit=5&days=20&source=InciWeb&status=' + status)
+//   console.log('hello' + status)
+//   .then((res)=>{
+//     return res.body
+//   })
+// }
+
+export function getPic (callback) {
+  request 
+      .get(nasaUrl)
+      .end((err, res)=> {
+        callback(err, res.body)
+      })
 }

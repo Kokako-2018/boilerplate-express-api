@@ -1,32 +1,42 @@
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
-import {getTranslation} from '../api'
+import {getPic} from '../api'
 
 
 class App extends React.Component {
     constructor (props) {
       super(props)
       this.state = {
-          word: null,
-          translation: null
+          error: null,
+          pic: []
       }
+      this.refreshPic = this.refreshPic.bind(this)
+      this.renderPic = this.renderPic.bind(this)
   }
 
   componentDidMount () {
-    let word = 'canoe'
-    getTranslation(word)
-      .then(translation => {
-        this.setState({word: word, translation: translation})
-      })
+        this.refreshPic()
+    }
+
+    renderPic (err, pic) {
+        this.setState({
+            error: err,
+            pic: pic || []
+        })
+    }
+
+    refreshPic (err) {
+        this.setState({
+            error: err,
+        })
+        getPic(this.renderPic)
 }
 
 render () {
     return (
       <div className='app'>
-        <h1>Fullstack Boilerplate</h1>
-        <p>{this.state.word}</p>
-        <p>{this.state.translation}</p>
+        <img className="picture" src={this.state.pic.url}/>
       </div>
     )
   }
