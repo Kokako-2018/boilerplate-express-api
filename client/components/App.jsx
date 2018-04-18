@@ -14,6 +14,7 @@ export default class App extends React.Component {
       this.refreshPic = this.refreshPic.bind(this)
       this.renderPic = this.renderPic.bind(this)
       this.showDetails = this.showDetails.bind(this)
+      this.hideDetails = this.hideDetails.bind(this)
     }
 
     componentDidMount () {
@@ -40,13 +41,23 @@ export default class App extends React.Component {
         })
     }
 
+    hideDetails (){
+        this.setState({
+            detailsVisible:false
+        })
+    }
+
+
     render() {
         return (
             <div>
              <div>NASA's pic of the day!</div>
              <img src={this.state.pic.url}/>
+             <br/>
              <button onClick={this.showDetails}>Show Details</button>
-             <PicDetails pic={this.state.pic} isVisible={this.state.detailsVisible}/>
+             <PicDetails pic={this.state.pic} isVisible={this.state.detailsVisible}
+             hideDetails={this.hideDetails}/>
+            
             </div>
         )
     }

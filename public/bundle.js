@@ -19557,6 +19557,7 @@ var App = function (_React$Component) {
         _this.refreshPic = _this.refreshPic.bind(_this);
         _this.renderPic = _this.renderPic.bind(_this);
         _this.showDetails = _this.showDetails.bind(_this);
+        _this.hideDetails = _this.hideDetails.bind(_this);
         return _this;
     }
 
@@ -19589,6 +19590,13 @@ var App = function (_React$Component) {
             });
         }
     }, {
+        key: 'hideDetails',
+        value: function hideDetails() {
+            this.setState({
+                detailsVisible: false
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -19600,12 +19608,14 @@ var App = function (_React$Component) {
                     'NASA\'s pic of the day!'
                 ),
                 _react2.default.createElement('img', { src: this.state.pic.url }),
+                _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     'button',
                     { onClick: this.showDetails },
                     'Show Details'
                 ),
-                _react2.default.createElement(_PicDetails2.default, { pic: this.state.pic, isVisible: this.state.detailsVisible })
+                _react2.default.createElement(_PicDetails2.default, { pic: this.state.pic, isVisible: this.state.detailsVisible,
+                    hideDetails: this.hideDetails })
             );
         }
     }]);
@@ -21702,7 +21712,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function PicDetails(props) {
     var pic = props.pic,
-        isVisible = props.isVisible;
+        isVisible = props.isVisible,
+        hideDetails = props.hideDetails;
 
     var classes = 'pic-details ' + (isVisible ? 'visible' : 'hidden');
 
@@ -21718,6 +21729,11 @@ function PicDetails(props) {
             'p',
             null,
             pic.explanation
+        ),
+        _react2.default.createElement(
+            'button',
+            { onClick: hideDetails },
+            'Close'
         )
     );
 }
