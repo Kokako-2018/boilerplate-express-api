@@ -19551,11 +19551,12 @@ var App = function (_React$Component) {
 
         _this.state = {
             error: null,
-            pic: []
-            // picExplanationVisible: false
+            pic: [],
+            detailsVisible: false
         };
         _this.refreshPic = _this.refreshPic.bind(_this);
         _this.renderPic = _this.renderPic.bind(_this);
+        _this.showDetails = _this.showDetails.bind(_this);
         return _this;
     }
 
@@ -19580,11 +19581,13 @@ var App = function (_React$Component) {
             });
             (0, _api.getPic)(this.renderPic);
         }
-
-        // showExplanation (explanation){
-
-        // }
-
+    }, {
+        key: 'showDetails',
+        value: function showDetails() {
+            this.setState({
+                detailsVisible: true
+            });
+        }
     }, {
         key: 'render',
         value: function render() {
@@ -19597,7 +19600,12 @@ var App = function (_React$Component) {
                     'NASA\'s pic of the day!'
                 ),
                 _react2.default.createElement('img', { src: this.state.pic.url }),
-                _react2.default.createElement(_PicDetails2.default, { pic: this.state.pic })
+                _react2.default.createElement(
+                    'button',
+                    { onClick: this.showDetails },
+                    'Show Details'
+                ),
+                _react2.default.createElement(_PicDetails2.default, { pic: this.state.pic, isVisible: this.state.detailsVisible })
             );
         }
     }]);
@@ -21693,12 +21701,14 @@ var _react2 = _interopRequireDefault(_react);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function PicDetails(props) {
-    var pic = props.pic;
+    var pic = props.pic,
+        isVisible = props.isVisible;
 
+    var classes = 'pic-details ' + (isVisible ? 'visible' : 'hidden');
 
     return _react2.default.createElement(
         'div',
-        null,
+        { className: classes },
         _react2.default.createElement(
             'h2',
             null,

@@ -9,10 +9,11 @@ export default class App extends React.Component {
       this.state= {
         error: null,
         pic: [],
-        // picExplanationVisible: false
+        detailsVisible: false
       } 
       this.refreshPic = this.refreshPic.bind(this)
       this.renderPic = this.renderPic.bind(this)
+      this.showDetails = this.showDetails.bind(this)
     }
 
     componentDidMount () {
@@ -33,15 +34,19 @@ export default class App extends React.Component {
         getPic(this.renderPic)
     }
 
-    // showExplanation (explanation){
-        
-    // }
+    showDetails () {
+        this.setState({
+            detailsVisible: true
+        })
+    }
+
     render() {
         return (
             <div>
              <div>NASA's pic of the day!</div>
              <img src={this.state.pic.url}/>
-             <PicDetails pic={this.state.pic}/>
+             <button onClick={this.showDetails}>Show Details</button>
+             <PicDetails pic={this.state.pic} isVisible={this.state.detailsVisible}/>
             </div>
         )
     }

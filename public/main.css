@@ -1,0 +1,9 @@
+.pic-details.visible {
+    display: block;
+  }
+  
+  .pic-details.hidden {
+    display: none;
+  }
+  
+  
