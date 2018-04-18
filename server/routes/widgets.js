@@ -3,8 +3,11 @@ const router = express.Router()
 
 const db = require('../db')
 
-router.get('/', function (req, res) {
-  res.json(db.getWidgets())
+router.get('/', (req, res) => {
+  db.getWidgets()
+    .then(widgets => {
+      res.json({widgets})
+    })
 })
 
 router.post('/', function (req, res) {
