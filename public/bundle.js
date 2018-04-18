@@ -19604,10 +19604,14 @@ var App = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     'div',
-                    null,
-                    'NASA\'s pic of the day!'
+                    { className: 'header' },
+                    _react2.default.createElement(
+                        'h1',
+                        null,
+                        'NASA\'s pic of the day!'
+                    )
                 ),
-                _react2.default.createElement('img', { src: this.state.pic.url }),
+                _react2.default.createElement('img', { className: 'picture', src: this.state.pic.url }),
                 _react2.default.createElement('br', null),
                 _react2.default.createElement(
                     'button',

@@ -51,8 +51,8 @@ export default class App extends React.Component {
     render() {
         return (
             <div>
-             <div>NASA's pic of the day!</div>
-             <img src={this.state.pic.url}/>
+             <div className="header"><h1>NASA's pic of the day!</h1></div>
+             <img className="picture" src={this.state.pic.url}/>
              <br/>
              <button onClick={this.showDetails}>Show Details</button>
              <PicDetails pic={this.state.pic} isVisible={this.state.detailsVisible}

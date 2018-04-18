@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Alien Planet";
+  src: url("./darrell-flood_alien-planet/AlienPlanet.ttf");
+  }
+
 .pic-details.visible {
     display: block;
   }
@@ -5,5 +10,37 @@
   .pic-details.hidden {
     display: none;
   }
+
+  body {
+    background: cover;
+    background-repeat: no-repeat;
+    background-image: url("https://media.giphy.com/media/3og0IV7MOCfnm85iRa/giphy.gif");
+    background-size: 100%;
+  }
+
+  .picture {
+    border-radius: 50%;
+    margin: 0 20% ;
+    width: 60%;
+    opacity: 0.8;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+animation:spin 4s linear infinite;
+  }
+
+  @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+  .header {
+    color: #00ff00;
+    text-align: center;
+    font-family: 'Alien Planet';
+    font-size: 2em;
+    letter-spacing: 0.2em;
+  }
+
+  p {
+    color: #00ff00;
+    background-color: black;
   
-  
+  }
