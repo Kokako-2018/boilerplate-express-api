@@ -20,6 +20,14 @@ function register(req, res, next) {
       res.status(500).send({ message: err.message })
     })
 }
+
+
+router.get('/username', token.decode, (req,res) => {
+  res.json({
+    username: req.user.username
+  })
+})
+
 // const {username, password} = req.body
 // TODO: make sure username doesn't already exist
 // TODO: if not, hash the password and add the user to the database
