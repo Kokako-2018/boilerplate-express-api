@@ -30,6 +30,12 @@ build/Release
 node_modules
 jspm_packages
 
+# .gitignore
+node_modules
+bundle*
+*.sqlite
+.env
+
 # Optional npm cache directory
 .npm
 
