@@ -10,6 +10,7 @@ module.exports = {
 function getUsers (testDb) {
   const db = testDb || connection
   return db('users').select()
+  
 }
 
 function getUser (id, testDb) {
