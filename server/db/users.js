@@ -6,7 +6,8 @@ const hash = require('../auth/hash')
 
 module.exports = {
   createUser,
-  userExists
+  userExists,
+  getUserByName
 }
 
 function createUser (username, password, conn) {
@@ -24,4 +25,12 @@ function userExists (username, conn) {
     .then(count => {
       return count[0].n > 0
     })
+}
+
+function getUserByName (username, conn) {
+  const db = conn || connection
+  return db('users')
+    .select()
+    .where('username', username)
+    .first()
 }
